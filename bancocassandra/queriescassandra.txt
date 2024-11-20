@@ -1,0 +1,18 @@
+1.
+select * from historico_aluno;
+
+2.
+select * from historico_professor;
+
+3.
+select * from formados;
+
+4.
+select * from departamento;
+
+5.
+select * from alunos_com_grupo_tcc;
+
+select * from grupo_tcc;
+
+select * from tcc;
