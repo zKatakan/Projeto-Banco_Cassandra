@@ -13,3 +13,8 @@
 * Após a criação das Tables, você pode utilizar o código de geração de dados para gerar dados novos para inserir clicando [aqui](bancocassandra/cassandragerdados.py) ou utilizar o preset de dados clicando [aqui](bancocassandra/dadosCassandra.cql), então basta copiar e colar os dados no CQL Console para inserir os dados.
 * As queries que atendem os objetivos propostos podem ser vistas clicando [aqui](bancocassandra/queriescassandra.txt).
 * O diagrama do Keyspace e das Tables pode ser visto clicando [aqui](bancocassandra/cassandra.png).
+
+4. Integrantes
+* Diego Meira Jardim  R.A: 24.122.094-6
+* Lucas Antunes Sampaio  R.A: 24.122.056-5
+* Romulo Carneiro de Oliveira Canavesso  R.A: 24.122.093-8
