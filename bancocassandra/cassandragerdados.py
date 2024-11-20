@@ -3,21 +3,20 @@ import random
 
 faker = Faker("pt_BR")
 nomes_departamentos = ["Ciência da Computação", "Engenharia Civil", "Administração"]
-# Função para criar IDs aleatórios com o número especificado de dígitos
+
 def montarID(qtIds, qtDigitos):
     Array = []
     for _ in range(qtIds):
         novoid = random.randint(10**(qtDigitos - 1), 10**qtDigitos - 1)
         while novoid in Array:
             novoid = random.randint(10**(qtDigitos - 1), 10**qtDigitos - 1)
-        Array.append(str(novoid))  # Converte para string para compatibilidade com Cassandra
+        Array.append(str(novoid))  
     return Array
 
-# Função para criar nomes únicos
+
 def criarnome():
     return f"{faker.unique.first_name()} {faker.unique.last_name()}"
 
-# Inicialização de IDs
 qtalunos = 50
 qtprof = 6
 qttcc = 3
@@ -30,13 +29,13 @@ tcc_id = montarID(qttcc, 5)
 dept_id = montarID(3, 4)
 disc_id = montarID(6, 3)
 
-# Classes com métodos de inserção para Cassandra
+
 class Aluno:
     def __init__(self, aluno_id, curso_id, aulas, grupo_tcc=None, tcc=None, formado=False):
         self.aluno_id = aluno_id
         self.nome = criarnome()
         self.curso_id = curso_id
-        self.aulas = aulas  # Lista de aulas para o histórico
+        self.aulas = aulas 
         self.grupo_tcc = grupo_tcc or 'NDA'
         self.tcc = tcc or 'NDA'
         self.formado = formado
@@ -84,7 +83,7 @@ class Aula:
         self.disc_id = disc_id
         self.semestre = semestre
         self.ano = ano
-        self.nota = random.uniform(5, 10)  # Nota aleatória entre 5 e 10
+        self.nota = random.uniform(5, 10)  
 
 class Departamento:
     def __init__(self, dept_id, nome, chefe_prof_id, chefe_nome):
@@ -119,13 +118,13 @@ class TCC:
             )
         return "".join(comandos)
 
-# Instanciando os objetos
+
 aulas = [Aula(disc_id[i], random.randint(1, 2), random.randint(2015, 2024)) for i in range(len(disc_id))]
 alunos = []
 for i in range(qtalunos):
     grupo_tcc = None
     tcc = None
-    formado = random.choice([True, False])  # Determina se o aluno está formado
+    formado = random.choice([True, False]) 
     
     if i < qttcc * integrantestcc:
         grupo_tcc = tcc_id[i // integrantestcc]
@@ -139,12 +138,12 @@ tccs = [TCC(tcc_id[i], f"TCC {i+1}", prof_id[i], curso_id[i % len(curso_id)], [a
 
 departamentos = []
 for i, nome in enumerate(nomes_departamentos):
-    if i < len(profs) and profs[i].departamento != 'NDA':  # Garante que temos um chefe
+    if i < len(profs) and profs[i].departamento != 'NDA': 
         departamentos.append(
             Departamento(dept_id[i], nome, profs[i].prof_id, profs[i].nome)
         )
 
-# Gerando arquivo .cql com comandos de inserção
+
 with open("dadosCassandra.cql", "w", encoding="utf-8") as arquivo:
     for aluno in alunos:
         arquivo.write(aluno.insert_dados())
