@@ -9,6 +9,7 @@
 *  Por conta de ser um banco não relacional, o CAssandra não suporta nenhum tipo de JOINS como em bancos relacionais, então utilizamos a desnormalização dos dados em varias tabelas proprias.
 
 3. Como utilizar o código
-* Primeiramente é necessario gerar as Tables onde serão armazenados os dados, para isso, basta abrir o documento de criação de coleções clicando aqui e inserir o conteudo no CQL Console
-* Após a criação das Tables, você pode utilizar o código de geração de dados para gerar dados novos para inserir clicando aqui ou utilizar o preset de dados clicando aqui, então basta copiar e colar os dados no CQL Console para inserir os dados.
-* As queries que atendem os objetivos propostos podem ser vistas clicando aqui.  
+* Primeiramente é necessario gerar as Tables onde serão armazenados os dados, para isso, basta abrir o documento de criação de coleções clicando [aqui](bancocassandra/tablescassandra.txt) e inserir o conteudo no CQL Console.
+* Após a criação das Tables, você pode utilizar o código de geração de dados para gerar dados novos para inserir clicando [aqui](bancocassandra/cassandragerdados.py) ou utilizar o preset de dados clicando [aqui](bancocassandra/dadosCassandra.cql), então basta copiar e colar os dados no CQL Console para inserir os dados.
+* As queries que atendem os objetivos propostos podem ser vistas clicando [aqui](bancocassandra/queriescassandra.txt).
+* O diagrama do Keyspace e das Tables pode ser visto clicando [aqui](bancocassandra/cassandra.png).
